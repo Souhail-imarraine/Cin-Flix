@@ -10,31 +10,96 @@
 <body>
     <header>
         <div class="container">
+            <video class="background-video" autoplay loop muted playsinline>
+                <source src="images/ASH Official Trailer (2025) Aaron Paul Movie ｜ 4K UHD HDR.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <nav class="nav">
-                <img src="images/CinéFlix 1.png" alt="">
-                <img src="images/icons8-dark-mode-64.png" class="dark" alt="" width="10px">
+                <a href="index.html"><img src="images/CinéFlix 1.png" alt=""></a>
                 <ul>
-                    <li><button><a href="">Accueil</a></button></li>
-                    <li><button><a href="">Ma list</a></button></li>
+                    <li><button><a href="index.html">Accueil</a></button></li>
+                    <li><button><a href="detail.html">Ma list</a></button></li>
                 </ul>
+                <i class="fa-solid fa-sun dark" style="color: #ffbb00;" id="toggleDark"></i> 
             </nav>
+            
         </div>        
     </header>
     
     <section>
         <div class="detail_container">
-            <img src="images/movie/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.png" alt="" width="250px">
-            <div>
-                <p>
-                    2008 - 2013 | 42 min | Drame
-                    Créée par Vince Gilligan
-                    Avec Bryan Cranston, Aaron Paul, Anna Gunn
-                    Nationalité U.S.A.
-                </p>
+            <img src="images/movie/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.png" alt="Movie Poster" width="250px">
+            <div class="movie_info">
+                <p class="movie_year">2008 - 2013 | 42 min | Drame</p>
+                <p class="movie_creator">Créée par Vince Gilligan</p>
+                <p class="movie_cast">Avec Bryan Cranston, Aaron Paul, Anna Gunn</p>
+                <p class="movie_nationality">Nationalité: U.S.A.</p>
+                <div>
+                    <h2>Synopsis & Info</h2>
+                    <p>Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Pour subvenir aux besoins de Skyler, sa femme enceinte, et de Walt Junior, son fils handicapé, il est obligé de travailler doublement. Son quotidien déjà morose devient carrément noir lorsqu'il apprend qu'il est atteint d'un incurable cancer des poumons</p>
+                    <div class="compteur_like">
+                        <i class="fa-regular fa-heart" style="color: #ff0000; font-size: 45px; cursor: pointer; margin: 20px 0;"></i>
+                        <p>23</p>
+                    </div>
+                        <div class="containerr">
+                            <div class="container_review">
+                                <div class="REVIEW">
+                                    <h2 >Noter</h2>
+                                </div>
+                                <div class="starts">
+                                    <i class="fa-regular fa-star starts"></i>
+                                    <i class="fa-regular fa-star starts"></i>
+                                    <i class="fa-regular fa-star starts"></i>
+                                    <i class="fa-regular fa-star starts"></i>
+                                    <i class="fa-regular fa-star starts"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <button><h2>ADD REVIEW</h2></button>
+                            </div>
+                        </div>
 
-                <i class="fa-regular fa-bookmark save_icons" style="color: rgb(255, 0, 0); font-size: 24px;"></i>
+                </div>
+            </div>
+            <div>
+                <i class="fa-regular fa-bookmark save_icons"></i>
             </div>
         </div>
     </section>
+   
+
+    <section class="sec">
+        <div class="container_movies">
+            <div class="scroll_movie">
+                <h2>Les meilleures séries</h2>
+                <div>
+                    <button  id="prev"><img src="images/icons8-right-arrow-32 (4).png"  alt=""></button>
+                    <button  id="prev"><img src="images/icons8-right-arrow-32 (3).png" id="next" alt=""></button>
+                </div>
+            </div>
+            <div class="image_movie" id="imageContainer">
+                <div>
+                    <img src="images/movie/25 Insane Joker Movie Artworks.jpg" alt="">
+                    <img src="images/movie/524602b2-3da0-4f4a-8be5-d3c918000cc7.jpg" alt="">
+                    <img src="images/movie/Best End of the World Movies _ Free Printable List (1).jpg" alt="">
+                    <img src="images/movie/Top New Science Fiction Books in 2020.jpg" alt="">
+                </div>
+               <div>
+                    <img src="images/movie/Vingadores_ Ultimato (2019).jpg" alt="">
+                    <img src="images/movie/VIDEO_ New Official Trailer and Poster Released for _Disneys Jungle Cruise_; Premieres July 2020! - WDW News Today.jpg" alt="">
+                    <img src="images/movie/TALK TO ME (2022 MOVIE) - PARANORMAL PROPAGANDA.jpg" alt="">
+                    <img src="images/movie/The Homesman.jpg" alt="">
+               </div> 
+                <div>
+                    <img src="images/movie/25 Insane Joker Movie Artworks.jpg" alt="">
+                    <img src="images/movie/524602b2-3da0-4f4a-8be5-d3c918000cc7.jpg" alt="">
+                    <img src="images/movie/Best End of the World Movies _ Free Printable List (1).jpg" alt="">
+                    <img src="images/movie/Top New Science Fiction Books in 2020.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>

@@ -12,7 +12,42 @@ BackBtn.addEventListener("click", () => {
 });
 
 
-// *****************8 dark moode ** 
+
+
+const starts = document.querySelectorAll(".starts i");
+
+starts.forEach((star, index1) => { 
+    star.addEventListener("click", () => {
+        starts.forEach((star, index2) =>{
+            if(index1 >= index2){
+                star.classList.add("active");
+                star.style.color = "yellow";
+            }else {
+                star.classList.remove("active");
+                star.style.color = "";
+            }
+        });
+    });
+});
+
+
+
+// ***************** dark moode *******************
+
+    // const iconDark = document.getElementById("toggleDark");
+    // const sunicon = document.querySelector(".fa-sun");
+    // const body = document.querySelector("body");
+
+    // iconDark.addEventListener("click", () => {
+    //     sunicon.classList.iconDark("fa-moon");
+    //     body.style.background = 'black';
+
+    //     if(sunicon.classList.contains(".fa-sun")){
+    //         sunicon.classList.contains(".fa-moon");
+
+    //     }
+        
+    // });
 
 
 const toggle = document.getElementById("toggleDark");
@@ -20,26 +55,6 @@ const body = document.querySelector('body');
 const sunIcon = document.querySelector('.fa-sun');
 const footer = document.querySelector('footer');
 
-// دالة لتحديث الوضع بناءً على القيمة من localStorage
-function updateMode() {
-    const currentMode = localStorage.getItem('mode');
-    if (currentMode === 'dark') {
-        sunIcon.classList.remove('fa-sun');
-        sunIcon.classList.add('fa-moon');
-        body.style.background = 'black';
-        footer.style.color = 'white';
-        footer.style.borderColor = 'white';
-    } else {
-        sunIcon.classList.remove('fa-moon');
-        sunIcon.classList.add('fa-sun');
-        body.style.background = '#F0FFB5';
-        footer.style.color = 'black';
-        footer.style.borderColor = 'black';
-    }
-    body.style.transition = 'background 2s, color 1.5s';
-}
-
-updateMode();
 
 toggle.addEventListener('click', () => {
     sunIcon.classList.toggle('fa-sun');
@@ -54,7 +69,7 @@ toggle.addEventListener('click', () => {
         localStorage.setItem('mode', 'light'); // حفظ الوضع الفاتح
         body.style.background = '#F0FFB5';
         footer.style.color = 'black';
-        footer.style.borderColor = 'black';
+        footer.style.borderColor = 'white';
     }
     body.style.transition = 'background 2s, color 1.5s';
 });
@@ -64,19 +79,23 @@ toggle.addEventListener('click', () => {
 // ************************************ searching **************************************
 
 
-const searchInput = document.getElementById('search');
-const searchButton = document.getElementById('btn_search');
-const movieContainers = document.querySelectorAll('.card_movie');
+// const inputSearch = document.getElementById("search");
+// const card = document.querySelectorAll("card_movie");
+// console.log(card);
 
-searchButton.addEventListener("click", function() {
-    const searchValue = searchInput.value.toLowerCase(); 
-    movieContainers.forEach(movie => {
-        const title = movie.querySelector('h3').innerText.toLowerCase(); 
-        if (title.includes(searchValue)) {
-            movie.style.display = 'block'; 
-        } else {
-            movie.style.display = 'none';
-        }
-    });
+// inputSearch.addEventListener("onkeyup", (e) => {
+//     if()
+// });
+
+
+
+
+/*************************like  ****************/
+
+const like = document.querySelector(".likes");
+let compteur = 0;
+like.addEventListener("click", () => {
+        compteur++;
+        document.getElementById("like").innerHTML = compteur;
+        like.style.color = "red";
 });
-

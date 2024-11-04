@@ -1,53 +1,38 @@
 let scrollContainer = document.querySelector(".image_movie");
-let BackBtn = document.getElementById("prev");
+let backBtn = document.getElementById("prev");
 let nextBtn = document.getElementById("next");
 
-
 nextBtn.addEventListener("click", () => {
-    scrollContainer.scrollLeft += 1500;
+    scrollContainer.scrollLeft += 400; 
 });
 
-BackBtn.addEventListener("click", () => {
-    scrollContainer.scrollLeft -= 1500;
-});
-
-
-
-
-const starts = document.querySelectorAll(".starts i");
-
-starts.forEach((star, index1) => { 
-    star.addEventListener("click", () => {
-        starts.forEach((star, index2) =>{
-            if(index1 >= index2){
-                star.classList.add("active");
-                star.style.color = "yellow";
-            }else {
-                star.classList.remove("active");
-                star.style.color = "";
-            }
-        });
-    });
+backBtn.addEventListener("click", () => {
+    scrollContainer.scrollLeft -= 400; 
 });
 
 
+let currentIndex = 0;
+const images = document.querySelectorAll('.carousel-images img');
+const totalImages = images.length;
 
-// ***************** dark moode *******************
+function moveSlide(direction) {
+    currentIndex += direction;
 
-    // const iconDark = document.getElementById("toggleDark");
-    // const sunicon = document.querySelector(".fa-sun");
-    // const body = document.querySelector("body");
+    if (currentIndex < 0) {
+        currentIndex = totalImages - 1;
+    }
 
-    // iconDark.addEventListener("click", () => {
-    //     sunicon.classList.iconDark("fa-moon");
-    //     body.style.background = 'black';
+    if (currentIndex >= totalImages) {
+        currentIndex = 0;
+    }
 
-    //     if(sunicon.classList.contains(".fa-sun")){
-    //         sunicon.classList.contains(".fa-moon");
+    const offset = -currentIndex * 300; 
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}px)`;
+}
 
-    //     }
-        
-    // });
+setInterval(() => moveSlide(1), 2000);
+
+// ***************** Dark Mode *******************
 
 
 const toggle = document.getElementById("toggleDark");
@@ -56,17 +41,30 @@ const sunIcon = document.querySelector('.fa-sun');
 const footer = document.querySelector('footer');
 
 
+const savedMode = localStorage.getItem('mode');
+if (savedMode === 'dark') {
+    sunIcon.classList.remove('fa-sun');
+    sunIcon.classList.add('fa-moon');
+    body.style.background = 'black';
+    footer.style.color = 'white';
+} else {
+    sunIcon.classList.remove('fa-moon');
+    sunIcon.classList.add('fa-sun');
+    body.style.background = '#F0FFB5';
+    footer.style.color = 'black';
+    footer.style.borderColor = 'white';
+}
+
 toggle.addEventListener('click', () => {
     sunIcon.classList.toggle('fa-sun');
     sunIcon.classList.toggle('fa-moon');
 
     if (sunIcon.classList.contains("fa-moon")) {
-        localStorage.setItem('mode', 'dark'); // حفظ الوضع المظلم
+        localStorage.setItem('mode', 'dark');
         body.style.background = 'black';
         footer.style.color = 'white';
-        footer.style.borderColor = 'white';
     } else {
-        localStorage.setItem('mode', 'light'); // حفظ الوضع الفاتح
+        localStorage.setItem('mode', 'light'); 
         body.style.background = '#F0FFB5';
         footer.style.color = 'black';
         footer.style.borderColor = 'white';
@@ -75,27 +73,56 @@ toggle.addEventListener('click', () => {
 });
 
 
-
-// ************************************ searching **************************************
-
-
-// const inputSearch = document.getElementById("search");
-// const card = document.querySelectorAll("card_movie");
-// console.log(card);
-
-// inputSearch.addEventListener("onkeyup", (e) => {
-//     if()
-// });
+// ************************************ Searching **************************************
 
 
+const inputSearch = document.getElementById("search");
+const containerMovie = document.querySelector(".container_list_movie");
+const cards = document.querySelectorAll(".card_movie");
+
+inputSearch.addEventListener("keyup", () => {
+    const searchValue = inputSearch.value.toUpperCase();
+
+    cards.forEach((card) => {
+        const titleMovie = card.querySelector(".info_movie h3");
+        if (titleMovie.innerHTML.toUpperCase().indexOf(searchValue) >= 0) {
+            card.style.display = ""; 
+        } else {
+            card.style.display = "none"; 
+        }
+    });
+});
 
 
-/*************************like  ****************/
 
-const like = document.querySelector(".likes");
-let compteur = 0;
-like.addEventListener("click", () => {
-        compteur++;
-        document.getElementById("like").innerHTML = compteur;
-        like.style.color = "red";
+// ***** Saving Movie Selections *****
+
+
+
+
+const saveIcons = document.querySelectorAll(".save_icon");
+const cardMovies = document.querySelectorAll(".card_movie"); 
+
+if (!localStorage.getItem("myDivContent")) {
+    localStorage.setItem("myDivContent", JSON.stringify({ name: [] }));
+}
+
+let theObject = JSON.parse(localStorage.getItem("myDivContent"));
+
+saveIcons.forEach((icon, index) => {
+    icon.addEventListener("click", () => {
+        const myContentDiv = cardMovies[index].innerHTML; 
+        theObject.name.push(myContentDiv);
+        localStorage.setItem("myDivContent", JSON.stringify(theObject));
+        alert('Saved!');
+    });
+});
+
+
+
+
+cardMovies.forEach(card => {
+    card.addEventListener("click", () => {
+        location.href = "http://127.0.0.1:5501/detail.html"; 
+    });
 });

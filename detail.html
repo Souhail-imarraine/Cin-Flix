@@ -18,7 +18,7 @@
                 <a href="index.html"><img src="images/CinéFlix 1.png" alt=""></a>
                 <ul>
                     <li><button><a href="index.html">Accueil</a></button></li>
-                    <li><button><a href="detail.html">Ma list</a></button></li>
+                    <li><button><a href="malist.html">Ma list</a></button></li>
                 </ul>
                 <i class="fa-solid fa-sun dark" style="color: #ffbb00;" id="toggleDark"></i> 
             </nav>
@@ -39,7 +39,7 @@
                     <p>Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Pour subvenir aux besoins de Skyler, sa femme enceinte, et de Walt Junior, son fils handicapé, il est obligé de travailler doublement. Son quotidien déjà morose devient carrément noir lorsqu'il apprend qu'il est atteint d'un incurable cancer des poumons</p>
                     <div class="compteur_like">
                         <i class="fa-solid fa-heart likes"></i>
-                        <p id="like"></p>
+                        <p id="like">0</p>
                     </div>
                         <div class="containerr">
                             <div class="container_review">
@@ -98,6 +98,7 @@
             </div>
         </div>
     </section>
+    
     <section>
         <div class="container_comment">
             <div>
@@ -108,7 +109,7 @@
                 <textarea name="" id="" placeholder="commentair"></textarea>
             </div>
             <div class="ajouter_comment">
-                <button>Ajouter commentair</button>
+                <button id="btn_comments">Ajouter commentair</button>
             </div>
             <hr>
         </div>
@@ -168,6 +169,6 @@
         
     </footer>
 
-    <script type="module" src="main.js"></script>
+    <script type="module" src="detail.js"></script>
 </body>
 </html>
